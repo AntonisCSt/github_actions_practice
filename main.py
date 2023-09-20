@@ -1,7 +1,6 @@
 import pandas as pd
 
-data = {'Name': ['George', 'Giannis', 'Charlie'],
-        'Age': [25, 30, 35]}
+data = {"Name": ["George", "Giannis", "Charlie"], "Age": [25, 30, 35]}
 
 df = pd.DataFrame(data)
 
