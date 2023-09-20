@@ -76,3 +76,45 @@ def test_dataframe_column_names():
 ```
 As you see so far it is like creating a new enviroment (ubuntu) and loading our scripts and running them.
 We dont care about the hardware or the server. We just choose an OS and test our scripts. We will see a similar concept with Docker.
+
+See the following different approaches:
+
+
+```yml
+name: Python Script Workflow
+run-name: ${{ github.actor }} is learning GitHub Actions with a Python example
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+    
+    - name: Install dependencies
+      run: pip install -r requirements/requirements.txt
+    
+    - name: Lint with Flake8
+      run: flake8 .
+    
+    - name: Format code with Black
+      run: black .
+    
+    - name: Run Pytest
+      run: pytest
+    
+    - name: Run Python script
+      run: python main.py
+
+    - name: Lint, Format, and Test (run together )
+      run: flake8 . && black . && pytest . && python main.py
+
+```
+In this example, if any of the commands (flake8, black, pytest, or python main.py) fails (returns a non-zero exit status), the subsequent commands won't execute, and the workflow run will be marked as failed.
