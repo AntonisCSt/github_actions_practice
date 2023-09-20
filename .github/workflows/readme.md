@@ -118,3 +118,7 @@ jobs:
 
 ```
 In this example, if any of the commands (flake8, black, pytest, or python main.py) fails (returns a non-zero exit status), the subsequent commands won't execute, and the workflow run will be marked as failed.
+
+
+solving black and flake8 conflict
+reference: https://stackoverflow.com/questions/68161741 python-black-formatter-conflict-with-rule-flake8-w503-in-vscode

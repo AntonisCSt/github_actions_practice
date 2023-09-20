@@ -9,5 +9,4 @@ def create_dataframe():
 def test_dataframe_column_names():
     df = create_dataframe()
     expected_columns = ["Name", "Age"]
-    assert df.columns.tolist() == expected_columns, \
-        "Column names are not as expected"
+    assert df.columns.tolist() == expected_columns, "Column names are not as expected"
