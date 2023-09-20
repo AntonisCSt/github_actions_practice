@@ -18,5 +18,17 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements/requirements.txt
     
+    - name: Lint with Flake8
+      run: flake8 .
+    
+    - name: Format code with Black
+      run: black .
+    
+    - name: Run Pytest
+      run: pytest
+    
     - name: Run Python script
       run: python main.py
+
+    - name: Lint, Format, and Test (run together )
+      run: flake8 . && black . && pytest . && python main.py

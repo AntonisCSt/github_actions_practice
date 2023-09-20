@@ -45,3 +45,34 @@ jobs:
     - name: Run Python script
       run: python main.py
 ```
+`Error: The version '3.1' with architecture 'x64' was not found for Ubuntu 22.04.`
+
+FIX: convert 3.10 to '3.10' it regnognizes it as a string
+
+# Protecting our project
+## adding linting, formating and testing
+
+```txt
+pandas==1.3.3
+flake8==3.9.2
+black==21.7b0
+pytest==6.2.5
+```
+
+lets now add some linting and formating:
+
+we added a `test/test_df.py`
+
+```python
+def create_dataframe():
+    data = {'Name': ['George', 'Giannis', 'Charlie'],
+            'Age': [25, 30, 35]}
+    return pd.DataFrame(data)
+
+def test_dataframe_column_names():
+    df = create_dataframe()
+    expected_columns = ['Name', 'Age']
+    assert df.columns.tolist() == expected_columns, "Column names are not as expected"
+```
+As you see so far it is like creating a new enviroment (ubuntu) and loading our scripts and running them.
+We dont care about the hardware or the server. We just choose an OS and test our scripts. We will see a similar concept with Docker.
